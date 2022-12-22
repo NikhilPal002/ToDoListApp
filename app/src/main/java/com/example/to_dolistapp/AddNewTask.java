@@ -34,14 +34,14 @@ import java.util.Map;
 
 public class AddNewTask extends BottomSheetDialogFragment {
 
-    public static final String TAG ="AddNewTask";
+    public static final String TAG = "AddNewTask";
 
     private TextView setDueDate;
     private EditText mTaskEdit;
     private Button mSaveBtn;
     private FirebaseFirestore firestore;
     private Context context;
-    private String dueDate="";
+    private String dueDate = "";
     private String id = "";
     private String dueDateUpdate = "";
 
@@ -52,7 +52,8 @@ public class AddNewTask extends BottomSheetDialogFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.add_new_task, container, false);
+        return inflater.inflate(R.layout.add_new_task , container , false);
+
     }
 
     @Override
@@ -66,6 +67,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
         firestore = FirebaseFirestore.getInstance();
 
         boolean isUpdate = false;
+
         final Bundle bundle = getArguments();
         if (bundle != null){
             isUpdate = true;
@@ -76,7 +78,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
             mTaskEdit.setText(task);
             setDueDate.setText(dueDateUpdate);
 
-            if (task.length()>0){
+            if (task.length() > 0){
                 mSaveBtn.setEnabled(false);
                 mSaveBtn.setBackgroundColor(Color.GRAY);
             }
@@ -93,8 +95,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
                 if (s.toString().equals("")){
                     mSaveBtn.setEnabled(false);
                     mSaveBtn.setBackgroundColor(Color.GRAY);
-                }
-                else {
+                }else{
                     mSaveBtn.setEnabled(true);
                     mSaveBtn.setBackgroundColor(getResources().getColor(R.color.green_blue));
                 }
@@ -118,12 +119,13 @@ public class AddNewTask extends BottomSheetDialogFragment {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        month = month +1;
-                        setDueDate.setText(dayOfMonth + "/"+ month+"/"+year);
-                        dueDate = dayOfMonth + "/"+ month+"/"+year;
-                        
+                        month = month + 1;
+                        setDueDate.setText(dayOfMonth + "/" + month + "/" + year);
+                        dueDate = dayOfMonth + "/" + month +"/"+year;
+
                     }
-                }, YEAR, MONTH,DAY);
+                } , YEAR , MONTH , DAY);
+
                 datePickerDialog.show();
             }
         });
@@ -132,19 +134,22 @@ public class AddNewTask extends BottomSheetDialogFragment {
         mSaveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String task = mTaskEdit.getText().toString();
 
                 if (finalIsUpdate){
-                    firestore.collection("task").document(id).update("task", task, "due", dueDate);
-                    Toast.makeText(context, "TaskUpdated", Toast.LENGTH_SHORT).show();
+                    firestore.collection("task").document(id).update("task" , task , "due" , dueDate);
+                    Toast.makeText(context, "Task Updated", Toast.LENGTH_SHORT).show();
+
                 }
                 else {
                     if (task.isEmpty()) {
-                        Toast.makeText(context, "Empty task not all", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Empty task not Allowed !!", Toast.LENGTH_SHORT).show();
                     } else {
+
                         Map<String, Object> taskMap = new HashMap<>();
 
-                        taskMap.put("Task", task);
+                        taskMap.put("task", task);
                         taskMap.put("due", dueDate);
                         taskMap.put("status", 0);
                         taskMap.put("time", FieldValue.serverTimestamp());
@@ -169,20 +174,19 @@ public class AddNewTask extends BottomSheetDialogFragment {
                 dismiss();
             }
         });
-
     }
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        this.context =context;
+        this.context = context;
     }
 
     @Override
     public void onDismiss(@NonNull DialogInterface dialog) {
         super.onDismiss(dialog);
         Activity activity = getActivity();
-        if (activity instanceof OnDialogCloseListner){
+        if (activity instanceof  OnDialogCloseListner){
             ((OnDialogCloseListner)activity).onDialogClose(dialog);
         }
     }
