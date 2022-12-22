@@ -5,11 +5,13 @@
       <map>
         <entry key="..\:/Users/NIKHIL PAL/AndroidStudioProjects/ToDoListApp/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.1" />
         <entry key="..\:/Users/NIKHIL PAL/AndroidStudioProjects/ToDoListApp/app/src/main/res/drawable/ic_baseline_calendar_today_24.xml" value="0.1" />
+        <entry key="..\:/Users/NIKHIL PAL/AndroidStudioProjects/ToDoListApp/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.1" />
         <entry key="..\:/Users/NIKHIL PAL/AndroidStudioProjects/ToDoListApp/app/src/main/res/drawable/ic_baseline_done_all_24.xml" value="0.1" />
+        <entry key="..\:/Users/NIKHIL PAL/AndroidStudioProjects/ToDoListApp/app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.1" />
         <entry key="..\:/Users/NIKHIL PAL/AndroidStudioProjects/ToDoListApp/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/NIKHIL PAL/AndroidStudioProjects/ToDoListApp/app/src/main/res/layout/activity_splash.xml" value="0.2" />
         <entry key="..\:/Users/NIKHIL PAL/AndroidStudioProjects/ToDoListApp/app/src/main/res/layout/add_new_task.xml" value="0.2" />
-        <entry key="..\:/Users/NIKHIL PAL/AndroidStudioProjects/ToDoListApp/app/src/main/res/layout/each_task.xml" value="0.264" />
+        <entry key="..\:/Users/NIKHIL PAL/AndroidStudioProjects/ToDoListApp/app/src/main/res/layout/each_task.xml" value="0.20802919708029197" />
       </map>
     </option>
   </component>
